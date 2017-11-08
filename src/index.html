@@ -36,7 +36,7 @@
 			//     Application configuration (ignored on ArcGIS Online, Portal and during development)
 			//-------------------------------------------------------------------------------------------
 			var configOptions = {
-				// Enter an application ID created through the Map Series builder 
+				// Enter an application ID created through the Map Series builder
 				appid: "",
 				// Optionally to secure Series's access, use an OAuth application ID (example: 6gyOg377fLUhUk6f)
 				// User will need to sign-in to access the viewer even if your application is public
@@ -79,6 +79,52 @@
 	<body class="claro">
 		<style>
 			/* CUSTOM CSS RULES */
+
+
+            /*
+            CSS chevrons
+            ref: https://codepen.io/jonneal/pen/kptBs
+            */
+            .chevron::before {
+                border-style: solid;
+                border-width: 0.25em 0.25em 0 0;
+                content: '';
+                display: inline-block;
+                height: 1em;
+                left: 0.15em;
+                position: relative;
+                top: 0.15em;
+                transform: rotate(-45deg);
+                vertical-align: top;
+                width: 1em;
+            }
+            .chevron.right:before {
+                left: 0;
+                transform: rotate(45deg);
+            }
+
+            .chevron.bottom:before {
+                top: 0;
+                transform: rotate(135deg);
+            }
+
+            .chevron.left:before {
+                left: 0.25em;
+                transform: rotate(-135deg);
+            }
+
+            /* Accordion panel toggle styling */
+            #accordionPanelToggle {
+                position: absolute;
+                left: 0;
+                top: 50%;
+                /* width: 9px; */
+                /* height: 38px; */
+                z-index: 9999;
+                cursor: pointer;
+                background: lightslategrey;
+                padding: 14px 6px;
+            }
 		</style>
 
 		<!-- Builder top panel is injected here -->
@@ -159,6 +205,9 @@
 					</td>
 					<!-- Main Stage -->
 					<td id="mainStagePanel">
+                        <div id="accordionPanelToggle" style="display:none">
+                            <span class="chevron left"></span>
+                        </div>
 						<div id="mainStagePanelInner">
 							<!-- Maps and media are injected here -->
 							<div class="medias"></div>

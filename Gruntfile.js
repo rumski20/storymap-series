@@ -316,10 +316,15 @@
 							search: 'TPL_ENV_DEV',
 							replace: 'TPL_ENV_PRODUCTION'
 						},
+                        {
+                            name: 'JS marker path',
+                            search: 'app/storymaps/common/_resources/icons/',
+                            replace: 'resources/common/icons/'
+                        },
 						{
-							name: 'JS marker path',
-							search: 'app/storymaps/common/_resources/icons/',
-							replace: 'resources/common/icons/'
+							name: 'custom image path',
+							search: 'app/storymaps/common/_resources/images/',
+							replace: 'resources/common/images/'
 						}
 					]
 				},
