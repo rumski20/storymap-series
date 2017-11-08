@@ -308,19 +308,29 @@
 						}
 					]
 				},
-				js: {
-					src: ['deploy/app/*.js'],
-					actions: [
-						{
-							name: 'JS isProduction flag',
-							search: 'TPL_ENV_DEV',
-							replace: 'TPL_ENV_PRODUCTION'
-						},
+                js: {
+                    src: ['deploy/app/*.js'],
+                    actions: [
+                        {
+                            name: 'JS isProduction flag',
+                            search: 'TPL_ENV_DEV',
+                            replace: 'TPL_ENV_PRODUCTION'
+                        },
                         {
                             name: 'JS marker path',
                             search: 'app/storymaps/common/_resources/icons/',
                             replace: 'resources/common/icons/'
                         },
+                        {
+                            name: 'custom image path',
+                            search: 'app/storymaps/common/_resources/images/',
+                            replace: 'resources/common/images/'
+                        }
+                    ]
+                },
+				customImages: {
+					src: ['deploy/app/*.js'],
+					actions: [
 						{
 							name: 'custom image path',
 							search: 'app/storymaps/common/_resources/images/',
@@ -443,10 +453,12 @@
 			'copy:config',
 			'copy:resources',
 			'copy:commonResources',
+			'regex-replace:customImages',
 
-			// Copy libs resources and perform replacement
-			'copy:libsResources',
-			'regex-replace:csslib',
+
+            // Copy libs resources and perform replacement
+            'copy:libsResources',
+            'regex-replace:csslib',
 
 			'copy:readme',
 			'clean:jsapioptim',
